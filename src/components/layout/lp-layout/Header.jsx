@@ -127,7 +127,7 @@ const Sidebar = ({ scrollTo }) => {
           <SheetClose asChild>
             <Button
               onClick={() => navigate("/strategy-feed")}
-              className="w-[119px] text-base w-full"
+              className="text-base w-full"
             >
               TRY NOW
             </Button>
