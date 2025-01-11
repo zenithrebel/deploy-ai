@@ -116,7 +116,7 @@ const Sidebar = ({ scrollTo }) => {
                   setOpen(false);
                   scrollTo(item.id);
                 }}
-                className="text-foreground-50 outline-none hover:text-foreground text-left transition-all"
+                className="text-foreground-50 text-lg w-fit outline-none hover:text-foreground text-left transition-all"
               >
                 {item.label}
               </button>
@@ -127,7 +127,7 @@ const Sidebar = ({ scrollTo }) => {
           <SheetClose asChild>
             <Button
               onClick={() => navigate("/strategy-feed")}
-              className="w-[119px] text-base"
+              className="w-[119px] text-base w-full"
             >
               TRY NOW
             </Button>
