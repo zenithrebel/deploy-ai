@@ -8,21 +8,22 @@ import { Icons } from "../../icon/icons";
 
 export default function Detail() {
   return (
-    <div className="grid grid-cols-2 gap-10">
-      <div className="space-y-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+      <div className="space-y-6 lg:space-y-8">
         <Heading
           title={"ETH - BTC Long Swing"}
           description={
             "A first-person shooter game built using Three.js where players navigate a 3D."
           }
+          titleClass={"max-lg:text-3xl"}
         />
-        <div className="ml-[38px] grid grid-cols-2 gap-3">
+        <div className="lg:ml-[38px] grid grid-cols-2 gap-3">
           <DetailCard label={"Contract complexity"} value={"Medium"} />
           <DetailCard label={"Security Score"} value={"90%"} />
           <DetailCard label={"Gas Efficiency"} value={"85%"} />
           <DetailCard label={"Tokenomics"} value={"Neutral"} />
         </div>
-        <ul className="ml-[38px] space-y-6">
+        <ul className="lg:ml-[38px] space-y-4 lg:space-y-6">
           <li className="space-y-2">
             <h2 className="text-foreground-50/70 text-xs">Technologies</h2>
             <div className="flex items-center gap-3 flex-wrap">
@@ -59,7 +60,10 @@ export default function Detail() {
 
       <div className="rounded-lg relative p-4 border max-h-[555px] border-background-50">
         <div className="absolute top-6 right-6 w-fit space-x-2">
-          <Button className="shadow shadow-primary hover:bg-background-150" variant="tertiary">
+          <Button
+            className="shadow shadow-primary hover:bg-background-150"
+            variant="tertiary"
+          >
             <Icons.copy />
           </Button>
           <Button className="hover:bg-primary shadow hover:shadow-background-50">

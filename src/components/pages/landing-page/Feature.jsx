@@ -3,10 +3,13 @@ import Heading from "../../global/Heading";
 
 export const Feature = () => {
   return (
-    <section className="relative py-10 px-[52px] w-full">
+    <section id="feature" className="relative py-10 px-6 lg:px-[52px] w-full">
       <CardBorderGradient>
-        <div className="flex gap-[121px]">
-          <div className="grid gap-[56px] w-full max-w-[550px]">
+        <div className="flex max-lg:flex-col gap-[52px] lg:gap-[121px]">
+          <div
+            data-aos="fade-right"
+            className="grid gap-6 lg:gap-[56px] max-lg:order-1 w-full max-w-[550px]"
+          >
             {FEATURES.map((item, index) => (
               <Heading
                 key={index}
@@ -18,12 +21,18 @@ export const Feature = () => {
             ))}
           </div>
 
-          <div className="flex flex-col items-end justify-between gap-[47px] text-right">
-            <p className="text-xl font-light leading-[180%]">
+          <div className="flex flex-col lg:items-end justify-between gap-6 lg:gap-[47px] lg:text-right">
+            <p
+              data-aos="fade-left"
+              className="text-xl font-light leading-[180%] max-lg:order-1"
+            >
               Our platform empowers you to design and refine your own trading
               strategies using advanced AI tools.
             </p>
-            <h1 className="text-[64px] uppercase leading-tight md:w-4/5 font-heading text-secondary-50">
+            <h1
+              data-aos="fade-left"
+              className="text-5xl lg:text-[64px] text-wrap uppercase leading-tight lg:w-4/5 font-heading text-secondary-50"
+            >
               Create, Deploy, and Profit
             </h1>
           </div>

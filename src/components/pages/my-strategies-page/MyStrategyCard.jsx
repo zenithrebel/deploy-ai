@@ -16,11 +16,16 @@ import { useNavigate } from "react-router";
 export const MyStrategyCard = () => {
   const navigate = useNavigate();
   return (
-    <div className="p-4 bg-background-150 flex items-center justify-between gap-4 rounded-lg">
+    <div className="p-4 bg-background-150 flex max-lg:flex-col lg:items-center justify-between gap-4 rounded-lg">
       <div className="space-y-2">
-        <h1 className="text-secondary-50 font-semibold text-xl text-center">
-          ETH - BTC Long Swing
-        </h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-secondary-50 font-semibold text-xl">
+            ETH - BTC Long Swing
+          </h1>
+          <div className="lg:hidden">
+            <DeleteStrategyDialog />
+          </div>
+        </div>
         <div className="flex items-center gap-2 text-sm">
           <div className="size-4">
             <img
@@ -33,8 +38,15 @@ export const MyStrategyCard = () => {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <Button onClick={() => navigate("/ai-agents/1")}>VIEW DETAILS</Button>
-        <DeleteStrategyDialog />
+        <Button
+          className="max-lg:w-full"
+          onClick={() => navigate("/ai-agents/1")}
+        >
+          VIEW DETAILS
+        </Button>
+        <div className="max-lg:hidden">
+          <DeleteStrategyDialog />
+        </div>
       </div>
     </div>
   );
@@ -46,7 +58,7 @@ const DeleteStrategyDialog = () => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <button className="text-primary outline-none">
-          <Icons.threeDot className="text-primary" />
+          <Icons.threeDot className="text-primary max-lg:rotate-90" />
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

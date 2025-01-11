@@ -7,7 +7,7 @@ export default function LPLayout() {
   return (
     <>
       <Header />
-      <main className="relative bg-background-450 min-h-screen max-w-[1440px] w-full overflow-hidden">
+      <main className="relative bg-background-450 min-h-screen w-full overflow-hidden">
         <Outlet />
         <Footer />
       </main>

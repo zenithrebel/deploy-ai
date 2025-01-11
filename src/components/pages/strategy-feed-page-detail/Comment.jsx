@@ -6,8 +6,8 @@ import { shortenAddress } from "../../../lib/utils";
 
 export default function Comment() {
   return (
-    <div className="ml-[38px] mt-[86px]">
-      <h1 className="text-[32px] font-heading text-primary mb-[22px]">
+    <div className="lg:ml-[38px] mt-16 lg:mt-[86px]">
+      <h1 className="text-[32px] font-heading text-primary mb-4 lg:mb-[22px]">
         13 Comments
       </h1>
       <div className="flex flex-col gap-2 items-end">

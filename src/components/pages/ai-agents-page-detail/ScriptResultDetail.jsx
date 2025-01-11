@@ -17,12 +17,12 @@ import {
 export const ScriptResultDetail = () => {
   const [isScript, setIsScript] = useState(true);
   return (
-    <div className="rounded-lg sticky top-0 right-0 p-4 border max-h-[555px] border-background-50 flex flex-col gap-4">
-      <div className="flex items-center justify-between h-9">
-        <div className="flex gap-2">
+    <div className="rounded-lg sticky top-0 right-0 p-4 border max-h-[555px] w-full border-background-50 flex flex-col gap-4">
+      <div className="flex max-lg:flex-col gap-2 lg:items-center justify-between lg:h-9">
+        <div className="flex gap-2 lg:gap-2">
           <Button
             onClick={() => setIsScript(true)}
-            className={` hover:bg-background-200 hover:text-primary ${
+            className={` hover:bg-background-200 max-lg:w-full hover:text-primary ${
               isScript
                 ? "bg-background-200 text-primary"
                 : "bg-background-300 text-muted"
@@ -33,7 +33,7 @@ export const ScriptResultDetail = () => {
           </Button>
           <Button
             onClick={() => setIsScript(false)}
-            className={` hover:bg-background-200 hover:text-primary ${
+            className={` hover:bg-background-200 max-lg:w-full hover:text-primary ${
               !isScript
                 ? "bg-background-200 text-primary"
                 : "bg-background-300 text-muted"
@@ -44,22 +44,24 @@ export const ScriptResultDetail = () => {
           </Button>
         </div>
         <div className="flex gap-2">
-          <Button className="" variant="outline">
-            <Icons.copy />
-          </Button>
+          {isScript && (
+            <Button className="max-lg:order-1" variant="outline">
+              <Icons.copy />
+            </Button>
+          )}
           <DeployDialog />
         </div>
       </div>
       {isScript ? (
         <>
-          <div className="size-full rounded-lg overflow-auto">
+          <div className="h-full max-w-full w-full rounded-lg overflow-auto">
             <SyntaxHighlighter
-              className
               customStyle={{
                 backgroundColor: "#000000",
-                padding: "24px",
+                padding: "24px 24px 48px 24px",
                 overflow: "auto",
                 height: "100%",
+                width: "100%",
               }}
               style={a11yDark}
             >
@@ -74,7 +76,7 @@ export const ScriptResultDetail = () => {
           </Button>
         </>
       ) : (
-        <div className="size-full flex  flex-col gap-[13px] py-2 rounded-lg overflow-auto">
+        <div className="size-full flex  flex-col lg:gap-[13px] py-2 rounded-lg overflow-auto">
           <AiMessageCard />
           <AiMessageCard />
         </div>
@@ -110,7 +112,7 @@ const DeployDialog = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>
+        <Button className="max-lg:w-full">
           DEPLOY TO TELEGRAM
           <Icons.arrow className="-rotate-45" />
         </Button>

@@ -5,21 +5,18 @@ import { ScriptResultDetail } from "../components/pages/ai-agents-page-detail/Sc
 
 export default function AiAgentsPageChat() {
   return (
-    <div className="">
-      <div className="grid grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <Heading
-            title={"Quantis"}
-            description={
-              "ETH - BTC Long Swing"
-            }
-            descriptionClass={"text-secondary-50 font-semibold"}
-          />
-          <Chatbox />
-        </div>
-
-        <ScriptResultDetail />
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-6">
+      <div className="space-y-2 w-full">
+        <Heading
+          title={"Quantis"}
+          description={"ETH - BTC Long Swing"}
+          descriptionClass={"text-secondary-50 font-semibold"}
+          titleClass={"max-lg:text-3xl"}
+        />
+        <Chatbox />
       </div>
+
+      <ScriptResultDetail />
     </div>
   );
 }

@@ -1,28 +1,38 @@
+import { cn } from "../../../lib/utils";
 import { Button } from "../../ui/button";
 
 export const Footer = () => {
   return (
-    <footer className="relative flex bg-background-450 min-h-[111vh] max-w-[1440px] py-10 px-[52px] w-full">
+    <footer className="relative flex bg-background-450 lg:min-h-[111vh] pt-10 pb-20 px-6 lg:px-[52px] w-full">
       <div className="relative z-10 flex flex-col gap-[35px] items-center justify-center w-full">
-        <div className="flex gap-[149px]">
-          <AgentsImage
+        <div data-aos="fade-up" className="flex gap-6 lg:gap-[149px]">
+          <AgentsCard
             image={"/assets/images/img-agent-1.png"}
             name={"Quantis"}
+            animation={"animate-float"}
           />
-          <AgentsImage
+          <AgentsCard
             image={"/assets/images/img-agent-2.png"}
             name={"Foresight"}
             order="-order-1"
+            animation={"animate-floatReverse"}
           />
-          <AgentsImage
+          <AgentsCard
             image={"/assets/images/img-agent-3.png"}
             name={"Guardis"}
+            animation={"animate-float"}
           />
         </div>
-        <h1 className="font-heading uppercase text-5xl text-center text-secondary-50 max-w-[1027px]">
+        <h1
+          data-aos="fade-up"
+          className="font-heading uppercase text-3xl lg:text-5xl text-center text-secondary-50 max-w-[1027px]"
+        >
           Start Crafting Your Ideal Trading Strategy Today
         </h1>
-        <div className="flex items-center justify-center gap-6">
+        <div
+          data-aos="fade-up"
+          className="flex items-center justify-center gap-6"
+        >
           <Button
             className="w-full min-w-[102px] px-6 text-base uppercase"
             variant="outline"
@@ -34,28 +44,37 @@ export const Footer = () => {
           </Button>
         </div>
       </div>
-      <div className="absolute z-0 left-0 px-[52px]">
+      <div
+        data-aos="fade-up"
+        className="absolute z-0 left-0 px-6 lg:px-[52px] w-full"
+      >
         <img
           src="/assets/images/img-decoration-footer.png"
           alt="app image"
-          className=""
+          className="w-full"
         />
       </div>
-      <div className="absolute -bottom-10 z-0 left-0">
+      <div className="absolute bottom-0 lg:-bottom-10 z-0 left-0">
         <img
           src="/assets/images/img-decoration-footer-2.png"
           alt="app image"
           className="w-full"
         />
       </div>
-      <div className="absolute -bottom-[200px] z-0 -left-[650px] w-[944px]">
+      <div
+        data-aos="slide-right"
+        className="absolute -bottom-[200px] z-0 -left-[650px] w-[944px]"
+      >
         <img
           src="/assets/images/img-decoration-gradient.png"
           alt="app image"
           className="w-full h-[300px] -rotate-45"
         />
       </div>
-      <div className="absolute top-[200px] z-0 -right-[600px] w-[944px]">
+      <div
+        data-aos="slide-left"
+        className="absolute top-[200px] z-0 -right-[600px] w-[944px]"
+      >
         <img
           src="/assets/images/img-decoration-gradient.png"
           alt="app image"
@@ -66,14 +85,14 @@ export const Footer = () => {
   );
 };
 
-const AgentsImage = ({ name, image, order = "" }) => {
+const AgentsCard = ({ name, image, order = "", animation }) => {
   return (
-    <div className="flex gap-2 flex-col">
+    <div className={cn("flex gap-2 flex-col", animation)}>
       <div className="flex items-center font-heading text-primary gap-2">
         <Bullet />
         {name}
       </div>
-      <div className={`max-w-[157px] w-full h-[192px] ${order}`}>
+      <div className={`max-w-[157px] w-full lg:h-[192px] ${order}`}>
         <img src={image} alt="agent" className="rounded-2xl" />
       </div>
     </div>

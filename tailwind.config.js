@@ -44,6 +44,20 @@ export default {
         heading: '"Anta", serif',
         paragraph: '"Albert Sans", serif',
       },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        floatReverse: {
+          "0%, 100%": { transform: "translateY(-10px)" },
+          "50%": { transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        float: "float 3s ease-in-out infinite",
+        floatReverse: "floatReverse 3s ease-in-out infinite",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

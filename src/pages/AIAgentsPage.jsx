@@ -8,8 +8,9 @@ export default function AIAgentsPage() {
       <Heading
         title={"Select Your AI Developer Agent"}
         description={"Choose your specialized AI agent to begin building"}
+        titleClass={"max-lg:text-3xl"}
       />
-      <div className="ml-[38px] grid grid-cols-2 gap-6">
+      <div className="lg:ml-[38px] grid lg:grid-cols-2 gap-6">
         <AIAgentCard />
         <AIAgentCard />
         <AIAgentCard />

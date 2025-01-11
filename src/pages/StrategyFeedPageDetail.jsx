@@ -5,8 +5,8 @@ import Detail from "../components/pages/strategy-feed-page-detail/Detail";
 
 export default function StrategyFeedPageDetail() {
   return (
-    <div className="">
-      <div className="ml-[38px] flex items-center gap-4 mb-6 text-sm font-medium">
+    <div>
+      <div className="lg:ml-[38px] flex items-center gap-4 mb-6 text-sm font-medium">
         <Link
           to={"/strategy-feed"}
           className="hover:text-secondary transition-all"

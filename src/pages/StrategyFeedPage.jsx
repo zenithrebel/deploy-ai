@@ -9,10 +9,11 @@ export default function StrategyFeedPage() {
   const navigate = useNavigate();
   return (
     <div className="space-y-[56px]">
-      <div className="flex items-center justify-between">
+      <div className="flex max-lg:flex-col gap-4 lg:items-center justify-between">
         <Heading
           title={"Strategy Feed"}
           description={"Choose your specialized AI agent to begin building"}
+          titleClass={"max-lg:text-3xl"}
         />
         <Button
           onClick={() => navigate("/ai-agents")}
@@ -23,7 +24,7 @@ export default function StrategyFeedPage() {
           <Icons.arrow className="group-hover:translate-x-1 transition-all" />
         </Button>
       </div>
-      <div className="ml-[38px] grid grid-cols-3 gap-6">
+      <div className="lg:ml-[38px] grid lg:grid-cols-3 gap-6">
         <StrategyCard
           title={"ETH - BTC Long Swing"}
           level={"Medium"}
