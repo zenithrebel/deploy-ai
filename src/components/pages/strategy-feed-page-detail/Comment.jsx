@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Textarea } from "../../ui/textarea";
 import { Button } from "../../ui/button";
 import { Icons } from "../../icon/icons";
-import {
-  formatDate,
-  generateRandomUser,
-  shortenAddress,
-} from "../../../lib/utils";
+import { formatDate, generateRandomUser } from "../../../lib/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createComment } from "../../../services/comment";
 import { toast } from "sonner";

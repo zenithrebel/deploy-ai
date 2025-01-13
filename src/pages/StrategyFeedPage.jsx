@@ -1,4 +1,3 @@
-import React from "react";
 import Heading from "../components/global/Heading";
 import { Icons } from "../components/icon/icons";
 import StrategyCard from "../components/pages/strategy-feed-page/StrategyCard";
@@ -8,6 +7,7 @@ import { AxiosError } from "axios";
 import { Skeleton } from "../components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { getCustomScripts } from "../services/script";
+import { toast } from "sonner";
 
 export default function StrategyFeedPage() {
   const navigate = useNavigate();
