@@ -1,9 +1,23 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import Comment from "../components/pages/strategy-feed-page-detail/Comment";
 import Detail from "../components/pages/strategy-feed-page-detail/Detail";
+import { useQuery } from "@tanstack/react-query";
+import { getScriptDetail } from "../services/script";
+import { AxiosError } from "axios";
+import { toast } from "sonner";
+import { Skeleton } from "../components/ui/skeleton";
 
 export default function StrategyFeedPageDetail() {
+  const location = useLocation();
+  const id = location.pathname.slice(15);
+
+  const { isLoading, isError, data, error } = useQuery({
+    queryKey: ["script"],
+    queryFn: () => getScriptDetail(id),
+  });
+
+  if (isError && error instanceof AxiosError) toast.error(error.message);
   return (
     <div>
       <div className="lg:ml-[38px] flex items-center gap-4 mb-6 text-sm font-medium">
@@ -20,8 +34,14 @@ export default function StrategyFeedPageDetail() {
           ETH - BTC Long Swing
         </Link>
       </div>
-      <Detail />
-      <Comment />
+      {isLoading ? (
+        <Skeleton className={"h-full w-full"} />
+      ) : (
+        <>
+          <Detail data={data} />
+          <Comment data={data} />
+        </>
+      )}
     </div>
   );
 }

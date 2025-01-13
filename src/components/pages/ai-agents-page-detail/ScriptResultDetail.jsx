@@ -13,9 +13,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../ui/dialog";
+import { useScriptContext } from "../../../hooks/useScriptContext";
+import { toast } from "sonner";
+import { useLocation } from "react-router";
 
 export const ScriptResultDetail = () => {
   const [isScript, setIsScript] = useState(true);
+  const { script, message, deploy, isLoading } = useScriptContext();
+
+  // scripts
+
+  const handleCopyScript = () => {
+    const newScript = script
+      .replaceAll("/n", " ")
+      .replaceAll("```", "")
+      .replaceAll("pinescript", "");
+    navigator.clipboard.writeText(newScript);
+    toast.success("Copied to clipboard");
+  };
+
   return (
     <div className="rounded-lg sticky top-0 right-0 p-4 border max-h-[555px] w-full border-background-50 flex flex-col gap-4">
       <div className="flex max-lg:flex-col gap-2 lg:items-center justify-between lg:h-9">
@@ -45,11 +61,23 @@ export const ScriptResultDetail = () => {
         </div>
         <div className="flex gap-2">
           {isScript && (
-            <Button className="max-lg:order-1" variant="outline">
+            <Button
+              onClick={handleCopyScript}
+              className="max-lg:order-1"
+              variant="outline"
+            >
               <Icons.copy />
             </Button>
           )}
-          <DeployDialog />
+          <Button
+            disabled={isLoading}
+            onClick={deploy}
+            className="max-lg:w-full"
+          >
+            DEPLOY
+            <Icons.arrow className="-rotate-45" />
+          </Button>
+          {/* <DeployDialog /> */}
         </div>
       </div>
       {isScript ? (
@@ -65,7 +93,7 @@ export const ScriptResultDetail = () => {
               }}
               style={a11yDark}
             >
-              {CODE}
+              {script?.replaceAll("```", "").replaceAll("pinescript", "") ?? ""}
             </SyntaxHighlighter>
           </div>
           <Button
@@ -77,31 +105,29 @@ export const ScriptResultDetail = () => {
         </>
       ) : (
         <div className="size-full flex  flex-col lg:gap-[13px] py-2 rounded-lg overflow-auto">
-          <AiMessageCard />
-          <AiMessageCard />
+          {message
+            .filter((item) => item.role === "assistant")
+            .map((item, index) => (
+              <AiMessageCard key={index} message={item.content} />
+            ))}
         </div>
       )}
     </div>
   );
 };
 
-const AiMessageCard = () => {
+const AiMessageCard = ({ message }) => {
   return (
     <div className="flex items-end gap-2">
       <div className="size-6">
         <img
-          src="/assets/images/img-agent-1.png"
+          src={`/assets/images/Quantis.png`}
           alt="agent"
           className="size-full object-cover rounded-full"
         />
       </div>
       <div className="p-[10px] break-words rounded-2xl border border-background-350 bg-background-200 text-foreground-100 max-w-[283px] w-fit">
-        🔮 DeployAI » Main Menu Welcome back [USER] - No Tier Using the menu
-        below, you can navigate through our bot If you prefer trading on a web
-        app: Click Here (https://app.deployAI.io/) 🌐 There are 2 users online
-        ETH » $3525 | Gas » 24 GWEI | Version » 2.0 🔮 Tutorial / Gitbook
-        (https://deployai.gitbook.io/deployai/telegram-bot/settings) - Website
-        (https://deployai.io/) - Trading Terminal (https://app.deployai.io/)
+        {message}
       </div>
     </div>
   );

@@ -4,48 +4,39 @@ import { Icons } from "../../icon/icons";
 import { Badge } from "../../ui/badge";
 import { Button } from "../../ui/button";
 
-export default function StrategyCard({
-  title,
-  level,
-  totalMessage,
-  agentName,
-  address,
-  agentImage,
-  gasEfficiency,
-  securityScore,
-  contractSize,
-}) {
+export default function StrategyCard({ data }) {
   const navigate = useNavigate();
   return (
     <div className="p-4 rounded-lg space-y-6 bg-background-150 text-foreground-50/70">
       {/* Header */}
       <div className="space-y-3">
         <div className="flex items-center justify-between gap-3">
-          <Badge>{level}</Badge>
+          <Badge>Medium</Badge>
           <div className="flex items-center gap-2 text-primary">
             <Icons.message className="size-5" />
-            <span className="font-semibold text-sm">{totalMessage}</span>
+            <span className="font-semibold text-sm">{data._count.comments}</span>
           </div>
         </div>
         <div className="space-y-2">
           <h1 className="text-secondary-50 font-semibold text-xl text-center">
-            {title}
+            {data.explanation.split(" ").slice(0, 4).join(" ")}
           </h1>
           <div className="flex items-center justify-center gap-2 text-sm">
-            <p>{shortenAddress(address, 4, 3)} use</p>
+            {/* <p>{shortenAddress(address, 4, 3)} use</p> */}
+            <p>{data.author} use</p>
             <div className="size-4">
               <img
-                src={agentImage}
-                alt={agentName}
+                src={`/assets/images/${data.assistant.name}.png`}
+                alt={data.assistant.name}
                 className="size-full rounded-full object-cover"
               />
             </div>
-            <p>Mikasa Agent</p>
+            <p>{data.assistant.name}</p>
           </div>
         </div>
       </div>
       {/* Body */}
-      <ul className="space-y-[13px] text-xs">
+      {/* <ul className="space-y-[13px] text-xs">
         <li className="flex items-center justify-between">
           <span>Gas-efficiency</span>
           <span className="font-semibold text-foreground-50">
@@ -64,19 +55,19 @@ export default function StrategyCard({
             {contractSize}
           </span>
         </li>
-      </ul>
+      </ul> */}
       {/* Footer */}
       <div className="space-y-2">
         <Button
-          onClick={() => navigate("/strategy-feed/1")}
+          onClick={() => navigate(`/strategy-feed/${data.id}`)}
           className="w-full text-xs"
         >
           View Contract
         </Button>
-        <Button variant="ghost" className="w-full text-xs">
+        {/* <Button variant="ghost" className="w-full text-xs">
           Get Telegram Bot
           <Icons.arrow className="-rotate-45" />
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="relative z-10 flex flex-col gap-[35px] items-center justify-center w-full">
         <div data-aos="fade-up" className="flex gap-6 lg:gap-[149px]">
           <AgentsCard
-            image={"/assets/images/img-agent-1.png"}
+            image={"/assets/images/2af9a673-6c99-44d3-93e7-f48bc4c57359.png"}
             name={"Quantis"}
             animation={"animate-float"}
           />

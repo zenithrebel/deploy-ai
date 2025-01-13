@@ -6,14 +6,14 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { Button } from "../../ui/button";
 import { Icons } from "../../icon/icons";
 
-export default function Detail() {
+export default function Detail({ data }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
       <div className="space-y-6 lg:space-y-8">
         <Heading
-          title={"ETH - BTC Long Swing"}
+          title={data.title}
           description={
-            "A first-person shooter game built using Three.js where players navigate a 3D."
+            data.explanation
           }
           titleClass={"max-lg:text-3xl"}
         />
@@ -27,11 +27,12 @@ export default function Detail() {
           <li className="space-y-2">
             <h2 className="text-foreground-50/70 text-xs">Technologies</h2>
             <div className="flex items-center gap-3 flex-wrap">
-              <Badge variant={"secondary"}>Solana N/A</Badge>
-              <Badge variant={"secondary"}>Anchor 0.12.0</Badge>
+              {data?.tags?.map((item, index) => (
+                <Badge key={index} variant={"secondary"}>{item}</Badge>
+              ))}
             </div>
           </li>
-          <li className="space-y-2">
+          {/* <li className="space-y-2">
             <h2 className="text-foreground-50/70 text-xs">
               Smart Contract Features
             </h2>
@@ -54,7 +55,7 @@ export default function Detail() {
             <div className="flex items-center gap-3 flex-wrap">
               <Badge variant={"secondary"}>token sale</Badge>
             </div>
-          </li>
+          </li> */}
         </ul>
       </div>
 
@@ -76,12 +77,15 @@ export default function Detail() {
             className
             customStyle={{
               backgroundColor: "#000000",
-              padding: "24px",
+              padding: "24px 24px 48px 24px",
               overflow: "auto",
+              height: "100%",
+              width: "100%",
             }}
             style={a11yDark}
           >
-            {CODE}
+            {data?.script?.replaceAll("```", "").replaceAll("pinescript", "") ??
+              ""}
           </SyntaxHighlighter>
         </div>
         <Button

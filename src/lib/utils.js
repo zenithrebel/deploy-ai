@@ -24,3 +24,23 @@ export const shortenAddress = (address, startChars = 4, endChars = 4) => {
     return address;
   }
 };
+
+export const formatDate = (date) => {
+  const options = { month: "short", day: "numeric" };
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+};
+
+export const generateRandomUser = () => {
+  const prefix = "user_";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let randomString = "";
+
+  // Generate a random string of 9 characters (you can change this length as needed)
+  for (let i = 0; i < 9; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    randomString += characters[randomIndex];
+  }
+
+  return prefix + randomString;
+};

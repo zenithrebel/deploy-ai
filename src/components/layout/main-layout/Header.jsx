@@ -61,14 +61,14 @@ const SidebarDialog = () => {
             ))}
           </ul>
         </div>
-        <SheetFooter>
+        {/* <SheetFooter>
           <DialogClose asChild>
             <ConnectWalletDialog
               isConnected={isConnected}
               setIsConnected={setIsConnected}
             />
           </DialogClose>
-        </SheetFooter>
+        </SheetFooter> */}
       </SheetContent>
     </Sheet>
   );
@@ -101,10 +101,10 @@ const NAV_ITEMS = [
     url: "/ai-agents",
     label: "AI Agents",
   },
-  {
-    url: "/my-strategies",
-    label: "My Strategies",
-  },
+  // {
+  //   url: "/my-strategies",
+  //   label: "My Strategies",
+  // },
   {
     url: "#",
     label: "Github",

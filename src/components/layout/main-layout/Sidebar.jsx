@@ -25,10 +25,10 @@ export const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <ConnectWalletDialog
+      {/* <ConnectWalletDialog
         isConnected={isConnected}
         setIsConnected={setIsConnected}
-      />
+      /> */}
     </aside>
   );
 };
@@ -59,10 +59,10 @@ const NAV_ITEMS = [
     url: "/ai-agents",
     label: "AI Agents",
   },
-  {
-    url: "/my-strategies",
-    label: "My Strategies",
-  },
+  // {
+  //   url: "/my-strategies",
+  //   label: "My Strategies",
+  // },
   {
     url: "#",
     label: "Github",
