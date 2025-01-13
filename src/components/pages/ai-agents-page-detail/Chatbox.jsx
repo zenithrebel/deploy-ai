@@ -2,12 +2,23 @@ import { useLocation } from "react-router";
 import { useScriptContext } from "../../../hooks/useScriptContext";
 import { Icons } from "../../icon/icons";
 import { Input } from "../../ui/input";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 export const Chatbox = () => {
   const { message, apiCall, isLoading } = useScriptContext();
   const [chat, setChat] = useState("");
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 200);
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [message]);
 
   const onSubmit = async () => {
     if (chat.length > 0) {
@@ -29,6 +40,7 @@ export const Chatbox = () => {
             return <AiMessageCard key={index} message={item.content} />;
           }
         })}
+        <div ref={messagesEndRef} />
       </div>
       <div className="relative">
         <Input
