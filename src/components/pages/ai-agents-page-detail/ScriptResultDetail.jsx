@@ -47,7 +47,7 @@ export const ScriptResultDetail = () => {
           >
             SCRIPT
           </Button>
-          <Button
+          {/* <Button
             onClick={() => setIsScript(false)}
             className={` hover:bg-background-200 max-lg:w-full hover:text-primary ${
               !isScript
@@ -57,12 +57,13 @@ export const ScriptResultDetail = () => {
             variant="tertiary"
           >
             RESULT
-          </Button>
+          </Button> */}
         </div>
         <div className="flex gap-2">
           {isScript && (
             <Button
               onClick={handleCopyScript}
+              disabled={script.length > 0 ? false : true}
               className="max-lg:order-1"
               variant="outline"
             >
@@ -70,9 +71,9 @@ export const ScriptResultDetail = () => {
             </Button>
           )}
           <Button
-            disabled={isLoading}
             onClick={deploy}
             className="max-lg:w-full"
+            disabled={script.length > 0 ? false : true}
           >
             DEPLOY
             <Icons.arrow className="-rotate-45" />
@@ -96,12 +97,12 @@ export const ScriptResultDetail = () => {
               {script?.replaceAll("```", "").replaceAll("pinescript", "") ?? ""}
             </SyntaxHighlighter>
           </div>
-          <Button
+          {/* <Button
             className="hover:bg-background-150 absolute inset-x-8 bottom-8 w shadow shadow-primary"
             variant="tertiary"
           >
             <Icons.code /> VIEW IN EDITOR
-          </Button>
+          </Button> */}
         </>
       ) : (
         <div className="size-full flex  flex-col lg:gap-[13px] py-2 rounded-lg overflow-auto">
@@ -112,23 +113,6 @@ export const ScriptResultDetail = () => {
             ))}
         </div>
       )}
-    </div>
-  );
-};
-
-const AiMessageCard = ({ message }) => {
-  return (
-    <div className="flex items-end gap-2">
-      <div className="size-6">
-        <img
-          src={`/assets/images/Quantis.png`}
-          alt="agent"
-          className="size-full object-cover rounded-full"
-        />
-      </div>
-      <div className="p-[10px] break-words rounded-2xl border border-background-350 bg-background-200 text-foreground-100 max-w-[283px] w-fit">
-        {message}
-      </div>
     </div>
   );
 };

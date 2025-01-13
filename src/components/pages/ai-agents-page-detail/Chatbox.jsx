@@ -9,12 +9,11 @@ export const Chatbox = () => {
   const { message, apiCall, isLoading } = useScriptContext();
   const [chat, setChat] = useState("");
 
-  
-
   const onSubmit = async () => {
     if (chat.length > 0) {
-      await apiCall(chat);
+      const newChat = chat;
       setChat("");
+      await apiCall(newChat);
     } else {
       toast.error("Plz tell me what u want");
     }
@@ -38,13 +37,19 @@ export const Chatbox = () => {
           placeholder="Ask Quantis"
           className="pr-12"
         />
-        <button
-          disabled={isLoading}
-          onClick={onSubmit}
-          className="absolute top-3 right-4"
-        >
-          <Icons.send className="text-primary size-6 hover:-translate-x-1 transition-all active:translate-x-1" />
-        </button>
+        {isLoading ? (
+          <div className="absolute top-3 right-4">
+            <Icons.loading className="text-primary size-6 animate-spin" />
+          </div>
+        ) : (
+          <button
+            disabled={isLoading}
+            onClick={onSubmit}
+            className="absolute top-3 right-4"
+          >
+            <Icons.send className="text-primary size-6 hover:-translate-x-1 transition-all active:translate-x-1" />
+          </button>
+        )}
       </div>
     </div>
   );

@@ -2,7 +2,8 @@ import { useNavigate } from "react-router";
 import { shortenAddress } from "../../../lib/utils";
 import { Icons } from "../../icon/icons";
 import { Badge } from "../../ui/badge";
-import { Button } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
+import { Link } from "lucide-react";
 
 export default function StrategyCard({ data }) {
   const navigate = useNavigate();
@@ -14,7 +15,9 @@ export default function StrategyCard({ data }) {
           <Badge>Medium</Badge>
           <div className="flex items-center gap-2 text-primary">
             <Icons.message className="size-5" />
-            <span className="font-semibold text-sm">{data._count.comments}</span>
+            <span className="font-semibold text-sm">
+              {data._count.comments}
+            </span>
           </div>
         </div>
         <div className="space-y-2">
@@ -64,10 +67,19 @@ export default function StrategyCard({ data }) {
         >
           View Contract
         </Button>
-        {/* <Button variant="ghost" className="w-full text-xs">
-          Get Telegram Bot
-          <Icons.arrow className="-rotate-45" />
-        </Button> */}
+        {data.status === "LAUNCHED" && (
+          <a
+            href={data.externalLink}
+            target="_blank"
+            className={buttonVariants({
+              variant: "ghost",
+              className: "w-full text-xs",
+            })}
+          >
+            Get Telegram Bot
+            <Icons.arrow className="-rotate-45" />
+          </a>
+        )}
       </div>
     </div>
   );

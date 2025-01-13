@@ -47,6 +47,21 @@ export default function StrategyFeedPage() {
       </div>
       <div className="space-y-6 lg:ml-[38px] ">
         <div className="space-y-[10px]">
+          <h1 className="font-heading text-2xl text-secondary-50">Explore</h1>
+          <p>Explore a collection of strategies presented as scripts.</p>
+        </div>
+        <div className="grid lg:grid-cols-3 gap-6">
+          {launched.isLoading
+            ? [..."foo"].map((_, index) => (
+                <Skeleton key={index} className={"w-full h-[360px]"} />
+              ))
+            : launched.data?.data?.map((item, index) => (
+                <StrategyCard key={index} data={item} />
+              ))}
+        </div>
+      </div>
+      <div className="space-y-6 lg:ml-[38px] ">
+        <div className="space-y-[10px]">
           <h1 className="font-heading text-2xl text-secondary-50">Deployed</h1>
           <p>
             Discover strategies that are currently automated using Telegram
@@ -59,21 +74,6 @@ export default function StrategyFeedPage() {
                 <Skeleton key={index} className={"w-full h-[360px]"} />
               ))
             : deployed.data?.data?.map((item, index) => (
-                <StrategyCard key={index} data={item} />
-              ))}
-        </div>
-      </div>
-      <div className="space-y-6 lg:ml-[38px] ">
-        <div className="space-y-[10px]">
-          <h1 className="font-heading text-2xl text-secondary-50">Explore</h1>
-          <p>Explore a collection of strategies presented as scripts.</p>
-        </div>
-        <div className="grid lg:grid-cols-3 gap-6">
-          {launched.isLoading
-            ? [..."foo"].map((_, index) => (
-                <Skeleton key={index} className={"w-full h-[360px]"} />
-              ))
-            : launched.data?.data?.map((item, index) => (
                 <StrategyCard key={index} data={item} />
               ))}
         </div>
