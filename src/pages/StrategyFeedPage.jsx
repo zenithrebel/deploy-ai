@@ -47,8 +47,11 @@ export default function StrategyFeedPage() {
       </div>
       <div className="space-y-6 lg:ml-[38px] ">
         <div className="space-y-[10px]">
-          <h1 className="font-heading text-2xl text-secondary-50">Explore</h1>
-          <p>Explore a collection of strategies presented as scripts.</p>
+          <h1 className="font-heading text-2xl text-secondary-50">Deployed</h1>
+          <p>
+            Discover strategies that are currently automated using Telegram
+            bots.
+          </p>
         </div>
         <div className="grid lg:grid-cols-3 gap-6">
           {launched.isLoading
@@ -62,11 +65,8 @@ export default function StrategyFeedPage() {
       </div>
       <div className="space-y-6 lg:ml-[38px] ">
         <div className="space-y-[10px]">
-          <h1 className="font-heading text-2xl text-secondary-50">Deployed</h1>
-          <p>
-            Discover strategies that are currently automated using Telegram
-            bots.
-          </p>
+          <h1 className="font-heading text-2xl text-secondary-50">Explore</h1>
+          <p>Explore a collection of strategies presented as scripts.</p>
         </div>
         <div className="grid lg:grid-cols-3 gap-6">
           {deployed.isLoading
