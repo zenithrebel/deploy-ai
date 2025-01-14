@@ -60,9 +60,13 @@ export default function Header() {
       } text-foreground duration-300`}
     >
       <button onClick={() => scrollTo("hero")} className="outline-none">
-        <h1 className="font-bold font-paragraph text-[32px] text-foreground">
-          DeployAI
-        </h1>
+        <div className="w-40">
+          <img
+            src={`/assets/images/img-deploy.png`}
+            alt={"logo"}
+            className="size-full object-contain"
+          />
+        </div>
       </button>
       <nav className="flex items-center gap-12 text-lg max-lg:hidden">
         {NAV_ITEMS.map((item, index) => (
@@ -101,8 +105,14 @@ const Sidebar = ({ scrollTo }) => {
       <SheetContent className="flex flex-col justify-between">
         <div className="space-y-8">
           <SheetHeader>
-            <SheetTitle className="font-bold font-paragraph text-left text-[32px] text-foreground">
-              DeployAI
+            <SheetTitle>
+              <div className="w-40">
+                <img
+                  src={`/assets/images/img-deploy.png`}
+                  alt={"logo"}
+                  className="size-full object-contain"
+                />
+              </div>
             </SheetTitle>
             <SheetDescription className="text-left">
               Your Next-Gen Trading Co-Pilot

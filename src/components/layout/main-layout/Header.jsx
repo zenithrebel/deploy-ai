@@ -3,32 +3,32 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Icons } from "../../icon/icons";
 import { Button } from "../../ui/button";
-import { DialogClose } from "../../ui/dialog";
 import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "../../ui/sheet";
-import { ConnectWalletDialog } from "./ConnectWalletDialog";
 
 export const Header = () => {
   return (
     <header className="lg:hidden w-full flex items-center gap-5">
       <SidebarDialog />
-      <h1 className="font-bold font-paragraph text-[32px] text-foreground">
-        DeployAI
-      </h1>
+      <div className="w-40">
+        <img
+          src={`/assets/images/img-deploy.png`}
+          alt={"logo"}
+          className="size-full object-contain"
+        />
+      </div>
     </header>
   );
 };
 
 const SidebarDialog = () => {
   const [open, setOpen] = useState(false);
-  const [isConnected, setIsConnected] = useState(false);
   const { pathname } = useLocation();
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -42,7 +42,13 @@ const SidebarDialog = () => {
           <SheetHeader>
             <Link to={"/"}>
               <SheetTitle className="font-bold font-paragraph text-left text-[32px] text-foreground">
-                DeployAI
+                <div className="w-40">
+                  <img
+                    src={`/assets/images/img-deploy.png`}
+                    alt={"logo"}
+                    className="size-full object-contain"
+                  />
+                </div>
               </SheetTitle>
             </Link>
             <SheetDescription className="text-left">
